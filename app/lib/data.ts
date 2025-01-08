@@ -219,16 +219,16 @@ export async function fetchInvoiceById(id: string) {
 
 export async function fetchCustomers() {
   try {
-    const data = await sql<CustomerField>`
-      SELECT
-        id,
-        name
-      FROM customers
-      ORDER BY name ASC
-    `;
+    // const data = await sql<CustomerField>`
+    //   SELECT
+    //     id,
+    //     name
+    //   FROM customers
+    //   ORDER BY name ASC
+    // `;
 
-    const customers = data.rows;
-    return customers;
+    // const customers = data.rows;
+    return customers.sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all customers.');
